@@ -1,0 +1,29 @@
+
+{
+  "produits": [
+    {
+      "nom": "Téléphone",
+      "prix": 850.0
+    },
+    {
+      "nom": "Casque Bluetooth",
+      "prix": 120.0
+    },
+    {
+      "nom": "Montre connectée",
+      "prix": 220.0
+    },
+    {
+      "nom": "Chargeur USB",
+      "prix": 35.0
+    },
+    {
+      "nom": "Accessoires",
+      "prix": 50.0
+    },
+    {
+      "nom": "Cosmétiques",
+      "prix": 45.0
+    }
+  ]
+}
