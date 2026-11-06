@@ -1,25 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFF5F7">
+    android:background="@color/cream"
+    android:padding="16dp">
+
+    <!-- Logo -->
+    <include
+        layout="@layout/logo_wordmark"/>
+
+    <!-- Page title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Our Collection"
+        android:textColor="@color/mocha"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:layout_marginTop="25dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Catalogue des produits"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:padding="16dp" />
+        android:text="Find something you love ♡"
+        android:textColor="@color/muted_text"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="18dp"/>
 
-    <ListView
+    <Button
+        android:id="@+id/btnVoirPanier"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="12dp"
+        android:text="Mon panier  ♡"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/mocha"/>
+
+
+    <!-- Product grid -->
+    <GridView
         android:id="@+id/listViewProduits"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:numColumns="2"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="12dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:clipToPadding="false"
+        android:paddingBottom="12dp"/>
 
 </LinearLayout>

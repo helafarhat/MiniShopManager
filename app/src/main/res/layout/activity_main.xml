@@ -1,33 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#FFF5F7">
+    android:background="@color/cream"
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="MiniShopManager"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp" />
+        android:orientation="vertical"
+        android:padding="22dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bienvenue GTIC L3 !"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="30dp" />
+        <!-- Logo -->
+        <include
+            layout="@layout/logo_wordmark" />
 
-    <Button
-        android:id="@+id/btnVoirCatalogue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Voir le catalogue" />
+        <!-- Welcome -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Bonjour !"
+            android:textColor="@color/mocha"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:fontFamily="serif"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvWelcomeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bienvenue dans votre boutique !"
+            android:textColor="@color/muted_text"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Promotional banner -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_home_banner"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:padding="22dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="YOUR LITTLE\nSHOPPING CORNER"
+                android:textColor="@color/mocha"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                android:fontFamily="serif"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Découvrez nos essentiels"
+                android:textColor="@color/mocha"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <!-- Featured section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Découvrez notre boutique"
+            android:textColor="@color/mocha"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:fontFamily="serif"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Technologie, accessoires et beauté : trouvez vos coups de cœur."
+            android:textColor="@color/muted_text"
+            android:textSize="14sp"/>
+
+        <!-- Catalogue button -->
+        <Button
+            android:id="@+id/btnVoirCatalogue"
+            style="@style/MiniShopButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="24dp"
+            android:text="Découvrir le catalogue  →"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="Made with care ♡ MiniShopManager"
+            android:textColor="@color/muted_text"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="12dp"
+    android:layout_margin="4dp"
+    android:background="@drawable/bg_product_card">
+
+    <ImageView
+        android:id="@+id/imgProduct"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:scaleType="centerInside"
+        android:contentDescription="Image du produit"/>
+
+    <TextView
+        android:id="@+id/tvProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/mocha"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/btnAjouterPanier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ajouter ♡"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/rosewood"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>

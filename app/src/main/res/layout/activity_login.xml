@@ -1,39 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="24dp"
-    android:background="#FFF5F7">
+    android:background="@color/cream"
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MiniShopManager"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="24dp" />
-
-    <EditText
-        android:id="@+id/etStudentName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Nom "
-        android:inputType="textPersonName"
-        android:singleLine="true" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="26dp">
 
+        <!-- Logo -->
+        <include
+            layout="@layout/logo_wordmark"/>
 
-    <CheckBox
-        android:id="@+id/cbRemember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Se souvenir de moi" />
+        <!-- Welcome message -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:text="Welcome back ♡"
+            android:textColor="@color/mocha"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:fontFamily="serif"
+            android:gravity="center"/>
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connexion" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Connectez-vous pour découvrir notre boutique."
+            android:textColor="@color/muted_text"
+            android:textSize="14sp"
+            android:gravity="center"/>
 
-</LinearLayout>
+        <!-- Login card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="22dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_login_card">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Votre nom"
+                android:textColor="@color/mocha"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+
+            <EditText
+                android:id="@+id/etStudentName"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:hint="Entrez votre nom"
+                android:inputType="textPersonName"
+                android:singleLine="true"
+                android:padding="12dp"
+                android:textColor="@color/mocha"
+                android:textColorHint="@color/muted_text"
+                android:backgroundTint="@color/rosewood"/>
+
+            <CheckBox
+                android:id="@+id/cbRemember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Se souvenir de moi"
+                android:textColor="@color/mocha"
+                android:buttonTint="@color/rosewood"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                style="@style/MiniShopButton"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="20dp"
+                android:text="Connexion  →"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="A little shopping, a lot of happiness ♡"
+            android:textColor="@color/muted_text"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="18dp"
+    android:background="@color/cream">
+
+    <include
+        layout="@layout/logo_wordmark"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My Shopping Bag"
+        android:textColor="@color/mocha"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:fontFamily="serif"
+        android:layout_marginTop="25dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your selected favorites ♡"
+        android:textColor="@color/muted_text"
+        android:textSize="14sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="15dp"/>
+
+    <ListView
+        android:id="@+id/listViewCart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="8dp"/>
+
+    <TextView
+        android:id="@+id/tvEmptyCart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Votre panier est vide ♡"
+        android:textColor="@color/muted_text"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="20dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/dusty_pink"/>
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total : 0.00 DT"
+        android:textColor="@color/mocha"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:gravity="end"
+        android:paddingTop="18dp"
+        android:paddingBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnCheckout"
+        style="@style/MiniShopButton"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:text="Proceed to payment  →"/>
+
+</LinearLayout>

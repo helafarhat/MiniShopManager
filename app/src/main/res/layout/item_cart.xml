@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_product_card">
+
+    <TextView
+        android:id="@+id/tvCartName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mocha"
+        android:textSize="17sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tvCartPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/rosewood"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/btnDecrease"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:text="-"
+            android:textColor="@color/mocha"
+            android:backgroundTint="@color/soft_rose"/>
+
+        <TextView
+            android:id="@+id/tvCartQuantity"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/mocha"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnIncrease"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:text="+"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/rosewood"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btnRemove"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:text="Supprimer"
+            android:textSize="11sp"
+            android:textAllCaps="false"
+            android:textColor="@color/mocha"
+            android:backgroundTint="@color/soft_rose"/>
+
+    </LinearLayout>
+
+</LinearLayout>
