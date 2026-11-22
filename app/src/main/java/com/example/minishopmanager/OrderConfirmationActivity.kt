@@ -5,14 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 
-class OrderConfirmationActivity : ComponentActivity() {
+class OrderConfirmationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableLightEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_confirmation)
+        setupScreen()
 
         val name = intent.getStringExtra("CUSTOMER_NAME") ?: "Customer"
         val total = intent.getDoubleExtra("ORDER_TOTAL", 0.0)

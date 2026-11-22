@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 8dp grid -->
+    <dimen name="space_xs">4dp</dimen>
+    <dimen name="space_sm">8dp</dimen>
+    <dimen name="space_md">16dp</dimen>
+    <dimen name="space_lg">24dp</dimen>
+    <dimen name="space_xl">32dp</dimen>
+
+    <!-- Original names kept so nothing referencing them breaks -->
     <dimen name="screen_padding">20dp</dimen>
-    <dimen name="card_radius">18dp</dimen>
-    <dimen name="button_radius">14dp</dimen>
+    <dimen name="card_radius">20dp</dimen>
+    <dimen name="button_radius">16dp</dimen>
     <dimen name="small_spacing">8dp</dimen>
     <dimen name="medium_spacing">16dp</dimen>
     <dimen name="large_spacing">24dp</dimen>
     <dimen name="icon_size">24dp</dimen>
+
+    <!-- Sizing -->
+    <dimen name="touch_target">48dp</dimen>
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="top_bar_height">56dp</dimen>
+    <dimen name="bottom_nav_height">68dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
 </resources>

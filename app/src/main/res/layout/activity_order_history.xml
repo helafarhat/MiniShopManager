@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/screenRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/MiniShop.TopBar"
+        android:paddingStart="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_sm">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBackHistory"
+            style="@style/Widget.MiniShop.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Retour"
+            app:icon="@drawable/ic_arrow_back" />
+
+        <TextView
+            style="@style/MiniShop.TopBarTitle"
+            android:text="Order History" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/screen_padding"
+        android:paddingEnd="@dimen/screen_padding"
+        android:paddingBottom="@dimen/space_sm"
+        android:text="Your previous purchases ♡"
+        android:textAppearance="@style/TextAppearance.MiniShop.Body.Secondary" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fillViewport="true"
+            android:paddingStart="16dp"
+            android:paddingTop="@dimen/space_xs"
+            android:paddingEnd="16dp"
+            android:paddingBottom="@dimen/space_md"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/listOrders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+
+        <!-- Empty state (shown/hidden by OrderHistoryActivity) -->
+        <LinearLayout
+            android:id="@+id/tvEmptyOrders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/space_xl"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:background="@drawable/bg_icon_circle"
+                android:importantForAccessibility="no"
+                android:padding="24dp"
+                android:src="@drawable/ic_empty_orders" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="center"
+                android:text="No orders yet ♡"
+                android:textAppearance="@style/TextAppearance.MiniShop.Title" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

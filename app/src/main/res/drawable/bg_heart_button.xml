@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_rose">
+    <item>
+        <inset android:inset="6dp">
+            <shape android:shape="oval">
+                <solid android:color="@color/overlay_white" />
+            </shape>
+        </inset>
+    </item>
+    <item android:id="@android:id/mask">
+        <inset android:inset="6dp">
+            <shape android:shape="oval">
+                <solid android:color="@color/white" />
+            </shape>
+        </inset>
+    </item>
+</ripple>

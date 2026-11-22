@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/screenRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/screen_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/MiniShop.TopBar"
+        android:paddingStart="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_sm">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTopBack"
+            style="@style/Widget.MiniShop.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Retour"
+            app:icon="@drawable/ic_arrow_back" />
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <include
+            layout="@layout/view_top_actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/space_lg">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="A little surprise for you ♡"
+                android:textAppearance="@style/TextAppearance.MiniShop.Display" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:layout_marginBottom="@dimen/space_md"
+                android:gravity="center"
+                android:text="Spin the wheel and discover your special discount!"
+                android:textAppearance="@style/TextAppearance.MiniShop.Body.Secondary" />
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_pointer" />
+
+            <com.example.minishopmanager.PrizeWheelView
+                android:id="@+id/prizeWheel"
+                android:layout_width="match_parent"
+                android:layout_height="320dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSpin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="Spin now" />
+
+            <TextView
+                android:id="@+id/tvSpinResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="center"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.MiniShop.Title" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnCopyCoupon"
+                style="@style/Widget.MiniShop.Button.Tonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:text="Copy Coupon Code"
+                android:visibility="gone"
+                app:icon="@drawable/ic_copy" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="center"
+                android:text="Your coupon is valid for 7 days. Enjoy your shopping!"
+                android:textAppearance="@style/TextAppearance.MiniShop.Caption" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -12,32 +12,27 @@ import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import org.json.JSONObject
+import android.widget.BaseAdapter
+import android.widget.ImageButton
 
 data class Produit(
     val nom: String,
     val prix: Double
 )
 
-class CatalogueActivity : ComponentActivity() {
+class CatalogueActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
-
-    // Your existing product photographs
-    private val images = intArrayOf(
-        R.drawable.product_phone,
-        R.drawable.product_headphones,
-        R.drawable.product_watch,
-        R.drawable.product_charger,
-        R.drawable.product_accessories,
-        R.drawable.product_cosmetics
-    )
+    private val images = ProductCatalog.images
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableLightEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_catalogue)
+        setupScreen()
 
         dbHelper = DBHelper(this)
 
@@ -45,20 +40,7 @@ class CatalogueActivity : ComponentActivity() {
             R.id.listViewProduits
         )
 
-        val btnVoirPanier = findViewById<Button>(
-            R.id.btnVoirPanier
-        )
-
         chargerProduits(gridView)
-
-        // Open shopping cart
-        btnVoirPanier.setOnClickListener {
-            val intent = Intent(
-                this,
-                CartActivity::class.java
-            )
-            startActivity(intent)
-        }
     }
 
     private fun chargerProduits(gridView: GridView) {
@@ -127,18 +109,25 @@ class CatalogueActivity : ComponentActivity() {
                 R.id.tvProductName
             )
 
+            val priceView = view.findViewById<TextView>(
+                R.id.tvProductPrice
+            )
+
             val btnAjouter = view.findViewById<Button>(
                 R.id.btnAjouterPanier
             )
 
             val product = products[position]
 
-            // Product name and price
-            textView.text =
-                "${product.nom}\n${"%.2f".format(product.prix)} DT"
+            // Product name and price (separate views so the price can be emphasised)
+            textView.text = product.nom
+            priceView.text = "%.2f DT".format(product.prix)
 
             // Display the corresponding photograph
             imageView.setImageResource(images[position])
+            // Heart: save / remove this product from favorites      <-- ADD
+            view.findViewById<ImageButton>(R.id.btnFavorite)         // <-- ADD
+                .bindFavorite(dbHelper, product.nom, product.prix)
             // Open product details when clicking the product
             view.setOnClickListener {
 
@@ -171,8 +160,9 @@ class CatalogueActivity : ComponentActivity() {
                         this@CatalogueActivity,
                         "${product.nom} ajouté au panier !",
                         Toast.LENGTH_SHORT
-                    ).show()
 
+                    ).show()
+                    this@CatalogueActivity.refreshCartBadge()
                 } else {
 
                     Toast.makeText(
@@ -186,7 +176,13 @@ class CatalogueActivity : ComponentActivity() {
             return view
         }
     }
+    override fun onResume() {
+        super.onResume()
 
+        // Hearts may have changed on a product page or on the Favorites screen
+        (findViewById<GridView>(R.id.listViewProduits).adapter as? BaseAdapter)
+            ?.notifyDataSetChanged()
+    }
     override fun onDestroy() {
         super.onDestroy()
 

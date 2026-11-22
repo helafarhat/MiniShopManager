@@ -5,15 +5,18 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageButton
 
-class ProductDetailsActivity : ComponentActivity() {
+class ProductDetailsActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableLightEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_details)
+        setupScreen()
 
         dbHelper = DBHelper(this)
 
@@ -38,7 +41,9 @@ class ProductDetailsActivity : ComponentActivity() {
         if (image != 0) {
             imgProduct.setImageResource(image)
         }
-
+        // Heart on the photo: save / remove this product from favorites
+        findViewById<ImageButton>(R.id.btnFavoriteDetail)
+            .bindFavorite(dbHelper, name, price)
         // Product descriptions
         tvDescription.text = when (name) {
             "Téléphone" ->
@@ -74,12 +79,14 @@ class ProductDetailsActivity : ComponentActivity() {
                     "$name ajouté au panier !",
                     Toast.LENGTH_SHORT
                 ).show()
+
             } else {
                 Toast.makeText(
                     this,
                     "Erreur lors de l'ajout au panier.",
                     Toast.LENGTH_SHORT
                 ).show()
+                refreshCartBadge()
             }
         }
 
@@ -88,7 +95,16 @@ class ProductDetailsActivity : ComponentActivity() {
             finish()
         }
     }
+    override fun onResume() {
+        super.onResume()
 
+        // The heart may have been changed from the Favorites screen
+        if (::dbHelper.isInitialized) {
+            val name = intent.getStringExtra("product_name") ?: return
+            findViewById<ImageButton>(R.id.btnFavoriteDetail)
+                .showFavoriteState(dbHelper.estFavori(name))
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
         if (::dbHelper.isInitialized) {

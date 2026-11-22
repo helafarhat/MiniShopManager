@@ -1,146 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/screenRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cream">
+    android:background="@color/screen_background"
+    android:orientation="vertical">
 
     <LinearLayout
+        style="@style/MiniShop.TopBar"
+        android:paddingStart="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_sm">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTopBack"
+            style="@style/Widget.MiniShop.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Retour"
+            app:icon="@drawable/ic_arrow_back" />
+
+        <TextView
+            style="@style/MiniShop.TopBarTitle"
+            android:text="Almost yours ♡" />
+    </LinearLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="22dp">
-
-        <include layout="@layout/logo_wordmark"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Almost yours ♡"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"
-            android:textColor="@color/mocha"
-            android:layout_marginTop="25dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Complete your order below."
-            android:textColor="@color/muted_text"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Delivery information"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:textColor="@color/mocha"/>
-
-        <EditText
-            android:id="@+id/etCustomerName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Full name"
-            android:inputType="textPersonName"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:id="@+id/etPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone number"
-            android:inputType="phone"/>
-
-        <EditText
-            android:id="@+id/etAddress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Delivery address"
-            android:inputType="textPostalAddress"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Payment method"
-            android:textSize="19sp"
-            android:textStyle="bold"
-            android:textColor="@color/mocha"
-            android:layout_marginTop="24dp"/>
-
-        <RadioGroup
-            android:id="@+id/rgPayment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp">
-
-            <RadioButton
-                android:id="@+id/rbCash"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Cash on delivery"
-                android:textColor="@color/mocha"
-                android:checked="true"/>
-
-            <RadioButton
-                android:id="@+id/rbCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bank card (demo only)"
-                android:textColor="@color/mocha"/>
-
-        </RadioGroup>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:background="@drawable/bg_product_card"
-            android:padding="18dp"
-            android:layout_marginTop="22dp">
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/space_lg">
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Order total"
-                android:textColor="@color/mocha"
-                android:textSize="17sp"
-                android:textStyle="bold"/>
+                android:text="Complete your order below."
+                android:textAppearance="@style/TextAppearance.MiniShop.Body.Secondary" />
+
+            <!-- Delivery information -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="Delivery information"
+                android:textAppearance="@style/TextAppearance.MiniShop.Title" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:hint="Full name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName|textCapWords"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:hint="Phone number">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:hint="Delivery address">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPostalAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Coupon -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="A little treat for you ♡"
+                android:textAppearance="@style/TextAppearance.MiniShop.Title" />
 
             <TextView
-                android:id="@+id/tvPaymentTotal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0.00 DT"
-                android:textColor="@color/rosewood"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
+                android:layout_marginTop="@dimen/space_xs"
+                android:text="Have a coupon from Lucky Spin? Apply it here!"
+                android:textAppearance="@style/TextAppearance.MiniShop.Caption" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="top"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Coupon code">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCouponCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapCharacters"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnApplyCoupon"
+                    style="@style/Widget.MiniShop.Button.Tonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="@dimen/space_sm"
+                    android:text="Apply" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCouponMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs"
+                android:text=""
+                android:textAppearance="@style/TextAppearance.MiniShop.Caption"
+                android:textColor="@color/accent_text" />
+
+            <!-- Payment method -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="Payment method"
+                android:textAppearance="@style/TextAppearance.MiniShop.Title" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.MiniShop.Card.Flat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md">
+
+                <RadioGroup
+                    android:id="@+id/rgPayment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_sm">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbCash"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Cash on delivery" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bank card (demo only)" />
+                </RadioGroup>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Order summary -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="@dimen/space_lg"
+                android:layout_marginEnd="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/space_lg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Subtotal"
+                            android:textAppearance="@style/TextAppearance.MiniShop.Body" />
+
+                        <TextView
+                            android:id="@+id/tvPaymentSubtotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00 DT"
+                            android:textAppearance="@style/TextAppearance.MiniShop.Body" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_sm"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Discount"
+                            android:textAppearance="@style/TextAppearance.MiniShop.Body"
+                            android:textColor="@color/accent_text" />
+
+                        <TextView
+                            android:id="@+id/tvDiscount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="-0.00 DT"
+                            android:textAppearance="@style/TextAppearance.MiniShop.Body"
+                            android:textColor="@color/accent_text" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/space_md"
+                        android:layout_marginBottom="@dimen/space_md"
+                        android:background="@color/divider" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Final total"
+                            android:textAppearance="@style/TextAppearance.MiniShop.Title" />
+
+                        <TextView
+                            android:id="@+id/tvPaymentTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.00 DT"
+                            android:textAppearance="@style/TextAppearance.MiniShop.Headline"
+                            android:textColor="@color/accent_text" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnConfirmOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="Confirm my order"
+                app:icon="@drawable/ic_check" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="center"
+                android:text="Thank you for shopping with us!"
+                android:textAppearance="@style/TextAppearance.MiniShop.Caption" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnConfirmOrder"
-            style="@style/MiniShopButton"
-            android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:layout_marginTop="25dp"
-            android:text="Confirm my order  ♡"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Thank you for shopping with us!"
-            android:textColor="@color/muted_text"
-            android:textSize="12sp"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="20dp"/>
-
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
+</LinearLayout>

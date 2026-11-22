@@ -1,107 +1,404 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/screenRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cream"
-    android:fillViewport="true">
+    android:background="@color/screen_background"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="22dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <!-- Logo -->
-        <include
-            layout="@layout/logo_wordmark" />
-
-        <!-- Welcome -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Bonjour !"
-            android:textColor="@color/mocha"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"/>
-
-        <TextView
-            android:id="@+id/tvWelcomeName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bienvenue dans votre boutique !"
-            android:textColor="@color/muted_text"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"/>
-
-        <!-- Promotional banner -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/bg_home_banner"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center_vertical"
-            android:padding="22dp">
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingTop="@dimen/space_md"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/space_md">
+
+            <!-- Wordmark on the left, favorites + cart on the right.
+                 The -12dp end margin lines the icon glyphs up with the 20dp screen padding. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <include
+                    layout="@layout/logo_wordmark"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <include
+                    layout="@layout/view_top_actions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="-12dp" />
+            </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="YOUR LITTLE\nSHOPPING CORNER"
-                android:textColor="@color/mocha"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:fontFamily="serif"/>
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="Bonjour ! ♡"
+                android:textAppearance="@style/TextAppearance.MiniShop.Display" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvWelcomeName"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Découvrez nos essentiels"
-                android:textColor="@color/mocha"
-                android:textSize="14sp"/>
+                android:layout_marginTop="@dimen/space_xs"
+                android:text="Bienvenue dans votre boutique !"
+                android:textAppearance="@style/TextAppearance.MiniShop.Body.Secondary" />
+
+            <!-- Search -->
+            <EditText
+                android:id="@+id/etHomeSearch"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="@dimen/space_md"
+                android:background="@drawable/bg_search"
+                android:drawablePadding="12dp"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableTint="@color/muted_text"
+                android:hint="Rechercher un produit..."
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:singleLine="true"
+                android:textAppearance="@style/TextAppearance.MiniShop.Body"
+                android:textColorHint="@color/muted_text" />
+
+            <!-- Promotional banner -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:background="@drawable/bg_home_banner"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="@dimen/space_lg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="YOUR LITTLE\nSHOPPING CORNER"
+                    android:textAppearance="@style/TextAppearance.MiniShop.Headline" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"
+                    android:text="Discover your everyday essentials ♡"
+                    android:textAppearance="@style/TextAppearance.MiniShop.Body" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tvExploreCatalogue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"
+                    android:minHeight="@dimen/touch_target"
+                    android:text="Explore now"
+                    android:textSize="14sp"
+                    app:icon="@drawable/ic_arrow_forward"
+                    app:iconGravity="textEnd" />
+            </LinearLayout>
+
+            <!-- Categories -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:text="Explore Categories"
+                android:textAppearance="@style/TextAppearance.MiniShop.Headline" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnCategoryAll"
+                        style="@style/MiniShop.Chip"
+                        android:text="All"
+                        android:textColor="@color/main_text" />
+
+                    <TextView
+                        android:id="@+id/btnCategoryTech"
+                        style="@style/MiniShop.Chip"
+                        android:layout_marginStart="8dp"
+                        android:text="Technology"
+                        android:textColor="@color/main_text" />
+
+                    <TextView
+                        android:id="@+id/btnCategoryAccessories"
+                        style="@style/MiniShop.Chip"
+                        android:layout_marginStart="8dp"
+                        android:text="Accessories"
+                        android:textColor="@color/main_text" />
+
+                    <TextView
+                        android:id="@+id/btnCategoryBeauty"
+                        style="@style/MiniShop.Chip"
+                        android:layout_marginStart="8dp"
+                        android:text="Beauty"
+                        android:textColor="@color/main_text" />
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Popular products -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Popular Products"
+                    android:textAppearance="@style/TextAppearance.MiniShop.Headline" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tvSeeAll"
+                    style="@style/Widget.MiniShop.Button.Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See all"
+                    app:icon="@drawable/ic_arrow_forward"
+                    app:iconGravity="textEnd" />
+            </LinearLayout>
+
+            <!-- Room around the cards so their shadows are not clipped -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="@dimen/space_md"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="2dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="@dimen/space_xs">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardPopular1"
+                        android:layout_width="156dp"
+                        android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"
+                                android:contentDescription="Phone"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/product_phone"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MiniShop.ImageTop" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="12dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="Téléphone"
+                                    android:textAppearance="@style/TextAppearance.MiniShop.Body.Strong" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="850.00 DT"
+                                    android:textAppearance="@style/TextAppearance.MiniShop.Price" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardPopular2"
+                        android:layout_width="156dp"
+                        android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"
+                                android:contentDescription="Bluetooth headphones"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/product_headphones"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MiniShop.ImageTop" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="12dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="Casque Bluetooth"
+                                    android:textAppearance="@style/TextAppearance.MiniShop.Body.Strong" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="120.00 DT"
+                                    android:textAppearance="@style/TextAppearance.MiniShop.Price" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardPopular3"
+                        android:layout_width="156dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="130dp"
+                                android:contentDescription="Smart watch"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/product_watch"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MiniShop.ImageTop" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="12dp">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="Montre connectée"
+                                    android:textAppearance="@style/TextAppearance.MiniShop.Body.Strong" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="220.00 DT"
+                                    android:textAppearance="@style/TextAppearance.MiniShop.Price" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVoirCatalogue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="Découvrir le catalogue"
+                app:icon="@drawable/ic_arrow_forward"
+                app:iconGravity="textEnd" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_lg"
+                android:gravity="center"
+                android:text="Made with care ♡ MiniShopManager"
+                android:textAppearance="@style/TextAppearance.MiniShop.Caption" />
 
         </LinearLayout>
+    </ScrollView>
 
-        <!-- Featured section -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Découvrez notre boutique"
-            android:textColor="@color/mocha"
-            android:textSize="21sp"
-            android:textStyle="bold"
-            android:fontFamily="serif"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Technologie, accessoires et beauté : trouvez vos coups de cœur."
-            android:textColor="@color/muted_text"
-            android:textSize="14sp"/>
-
-        <!-- Catalogue button -->
-        <Button
-            android:id="@+id/btnVoirCatalogue"
-            style="@style/MiniShopButton"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="24dp"
-            android:text="Découvrir le catalogue  →"/>
+    <!-- Bottom navigation: bottom system inset is added in code (MainActivity) -->
+    <LinearLayout
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_bar"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_sm">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text="Made with care ♡ MiniShopManager"
-            android:textColor="@color/muted_text"
-            android:textSize="12sp"/>
+            android:id="@+id/navHome"
+            style="@style/MiniShop.NavItem"
+            android:drawableTop="@drawable/ic_home"
+            android:text="Home" />
+
+        <TextView
+            android:id="@+id/navShop"
+            style="@style/MiniShop.NavItem"
+            android:drawableTop="@drawable/ic_catalogue"
+            android:text="Shop" />
+
+        <TextView
+            android:id="@+id/navOrders"
+            style="@style/MiniShop.NavItem"
+            android:drawableTop="@drawable/ic_orders"
+            android:text="Orders" />
+
+        <TextView
+            android:id="@+id/navProfile"
+            style="@style/MiniShop.NavItem"
+            android:drawableTop="@drawable/ic_profile"
+            android:text="Profile" />
 
     </LinearLayout>
 
-</ScrollView>
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 9+: rose-tinted card shadows instead of neutral grey -->
+    <style name="Widget.MiniShop.Card" parent="Base.Widget.MiniShop.Card">
+        <item name="android:outlineAmbientShadowColor">@color/shadow_rose</item>
+        <item name="android:outlineSpotShadowColor">@color/shadow_rose</item>
+    </style>
+</resources>

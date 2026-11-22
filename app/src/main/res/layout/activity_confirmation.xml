@@ -1,46 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/screenRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="28dp"
-    android:background="@color/cream">
+    android:background="@color/screen_background"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="♡"
-        android:textSize="65sp"
-        android:textColor="@color/rosewood"/>
+    <!-- Top-right favorites + cart, same as every other screen -->
+    <LinearLayout
+        style="@style/MiniShop.TopBar"
+        android:paddingStart="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_sm">
 
-    <TextView
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <include
+            layout="@layout/view_top_actions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Order confirmed!"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:textSize="29sp"
-        android:textStyle="bold"
-        android:fontFamily="serif"
-        android:textColor="@color/mocha"
-        android:layout_marginTop="15dp"/>
+        android:orientation="vertical"
+        android:padding="@dimen/space_lg">
 
-    <TextView
-        android:id="@+id/tvConfirmationMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textColor="@color/muted_text"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp"/>
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:background="@drawable/bg_success_circle"
+            android:importantForAccessibility="no"
+            android:padding="28dp"
+            android:src="@drawable/ic_check"
+            app:tint="@color/white" />
 
-    <Button
-        android:id="@+id/btnBackHome"
-        style="@style/MiniShopButton"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="Back to home"
-        android:layout_marginTop="30dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:gravity="center"
+            android:text="Order confirmed!"
+            android:textAppearance="@style/TextAppearance.MiniShop.Display" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.MiniShop.Card.Flat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <TextView
+                android:id="@+id/tvConfirmationMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:padding="@dimen/space_lg"
+                android:textAppearance="@style/TextAppearance.MiniShop.Body" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBackHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_lg"
+            android:text="Back to home"
+            app:icon="@drawable/ic_home"
+            app:iconGravity="textStart" />
+    </LinearLayout>
 
 </LinearLayout>

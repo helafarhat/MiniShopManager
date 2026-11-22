@@ -1,6 +1,15 @@
 <resources>
 
     <string name="app_name">MiniShop Manager</string>
+    <!-- Accessibility labels for the shared top-right actions and the heart toggle -->
+    <string name="cd_favorites">Mes favoris</string>
+    <string name="cd_cart">Mon panier</string>
+    <string name="cd_add_favorite">Ajouter aux favoris</string>
+    <string name="cd_remove_favorite">Retirer des favoris</string>
+    <plurals name="cd_cart_items">
+        <item quantity="one">Mon panier, %d article</item>
+        <item quantity="other">Mon panier, %d articles</item>
+    </plurals>
 
     <string-array name="products">
         <item>Téléphone</item>

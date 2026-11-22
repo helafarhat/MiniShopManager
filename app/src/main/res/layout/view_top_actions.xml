@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Shared top-right actions: Favorites + Cart (with item-count badge).
+     Wired automatically by setupScreen() in UiExtensions.kt on every screen that includes it. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnTopFavorites"
+        style="@style/Widget.MiniShop.Button.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cd_favorites"
+        app:icon="@drawable/ic_heart_outline" />
+
+    <FrameLayout
+        android:id="@+id/cartActionContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTopCart"
+            style="@style/Widget.MiniShop.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/cd_cart"
+            app:icon="@drawable/ic_bag" />
+
+        <TextView
+            android:id="@+id/tvCartBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="2dp"
+            android:background="@drawable/bg_badge"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:importantForAccessibility="no"
+            android:minWidth="18dp"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp"
+            android:textColor="@color/white"
+            android:textSize="11sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

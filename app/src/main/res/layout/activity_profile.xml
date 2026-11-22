@@ -1,16 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/screenRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@color/screen_background"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Bienvenue sur l'écran Profil !"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    <LinearLayout
+        style="@style/MiniShop.TopBar"
+        android:paddingStart="@dimen/space_sm"
+        android:paddingEnd="@dimen/space_sm">
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTopBack"
+            style="@style/Widget.MiniShop.Button.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Retour"
+            app:icon="@drawable/ic_arrow_back" />
+
+        <TextView
+            style="@style/MiniShop.TopBarTitle"
+            android:text="Profile" />
+        <include
+        layout="@layout/view_top_actions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/screen_padding"
+            android:paddingTop="@dimen/space_lg"
+            android:paddingEnd="@dimen/screen_padding"
+            android:paddingBottom="@dimen/space_lg">
+
+            <ImageView
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/bg_icon_circle"
+                android:importantForAccessibility="no"
+                android:padding="28dp"
+                android:src="@drawable/ic_profile"
+                app:tint="@color/rosewood_deep" />
+
+            <!-- Logged-in user's name (set in ProfileActivity) -->
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_md"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.MiniShop.Headline" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs"
+                android:gravity="center"
+                android:text="Bienvenue sur l'écran Profil !"
+                android:textAppearance="@style/TextAppearance.MiniShop.Body.Secondary" />
+
+            <!-- Existing feature: the order history -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnProfileOrders"
+                style="@style/Widget.MiniShop.Button.Tonal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xl"
+                android:text="Mes commandes"
+                app:icon="@drawable/ic_orders" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogout"
+                style="@style/Widget.MiniShop.Button.Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_sm"
+                android:text="Se déconnecter" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.MiniShopManager" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- Light-only Material 3 theme (AppCompat-based, so every Activity and
+         widget inflates correctly). Not DayNight on purpose: the brand is light. -->
+    <style name="Base.Theme.MiniShopManager" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/rosewood_deep</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/soft_rose</item>
+        <item name="colorOnPrimaryContainer">@color/mocha</item>
+        <item name="colorSecondary">@color/mocha</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondaryContainer">@color/soft_rose</item>
+        <item name="colorOnSecondaryContainer">@color/mocha</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorOnSurface">@color/mocha</item>
+        <item name="colorSurfaceVariant">@color/blush</item>
+        <item name="colorOnSurfaceVariant">@color/muted_text</item>
+        <item name="colorOutline">@color/rosewood</item>
+        <item name="colorOutlineVariant">@color/dusty_pink</item>
+        <item name="colorError">@color/error</item>
+        <item name="android:colorBackground">@color/cream</item>
+        <item name="android:windowBackground">@color/cream</item>
+        <item name="android:textColorPrimary">@color/mocha</item>
+        <item name="android:textColorSecondary">@color/muted_text</item>
+        <item name="android:textColorHint">@color/muted_text</item>
+
+        <!-- System bars: cream with dark icons (Android 15+ ignores the colors and draws edge-to-edge,
+             which the screens handle with window insets) -->
+        <item name="android:statusBarColor">@color/cream</item>
+        <item name="android:navigationBarColor">@color/cream</item>
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Global component styles -->
+        <item name="materialButtonStyle">@style/Widget.MiniShop.Button</item>
+        <item name="materialCardViewStyle">@style/Widget.MiniShop.Card</item>
+        <item name="textInputStyle">@style/Widget.MiniShop.TextInput</item>
+        <item name="checkboxStyle">@style/Widget.MiniShop.CheckBox</item>
+        <item name="radioButtonStyle">@style/Widget.MiniShop.RadioButton</item>
+    </style>
+
+    <style name="Theme.MiniShopManager" parent="Base.Theme.MiniShopManager" />
+
 </resources>

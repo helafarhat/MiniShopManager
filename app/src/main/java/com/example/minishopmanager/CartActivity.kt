@@ -1,4 +1,3 @@
-
 package com.example.minishopmanager
 
 import android.os.Bundle
@@ -6,23 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
-class CartActivity : ComponentActivity() {
+class CartActivity : AppCompatActivity() {
 
     private lateinit var dbHelper: DBHelper
     private lateinit var listView: ListView
     private lateinit var tvTotal: TextView
-    private lateinit var tvEmptyCart: TextView
+    private lateinit var tvEmptyCart: View
 
     private val products = ArrayList<PanierProduit>()
 
     private lateinit var adapter: CartAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableLightEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_cart)
+        setupScreen()
 
         dbHelper = DBHelper(this)
 
@@ -46,6 +47,22 @@ class CartActivity : ComponentActivity() {
                     "Votre panier est vide !",
                     Toast.LENGTH_SHORT
                 ).show()
+
+            } else if (!Session.isLoggedIn(this)) {
+
+                // Guests log in first; LoginActivity then continues
+                // straight to the payment screen with the cart intact
+                val intent = Intent(
+                    this,
+                    LoginActivity::class.java
+                )
+
+                intent.putExtra(
+                    LoginActivity.EXTRA_NEXT,
+                    LoginActivity.NEXT_PAYMENT
+                )
+
+                startActivity(intent)
 
             } else {
 

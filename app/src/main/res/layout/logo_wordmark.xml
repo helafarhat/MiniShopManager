@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MiniShop"
-        android:textColor="@color/mocha"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:fontFamily="serif"/>
+        android:textAppearance="@style/TextAppearance.MiniShop.Display" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="M A N A G E R"
-        android:textColor="@color/rosewood"
-        android:textSize="10sp"
         android:fontFamily="sans-serif-medium"
-        android:letterSpacing="0.12"/>
+        android:letterSpacing="0.2"
+        android:text="MANAGER"
+        android:textColor="@color/accent_text"
+        android:textSize="11sp" />
 
 </LinearLayout>
